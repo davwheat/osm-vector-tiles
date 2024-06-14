@@ -18,10 +18,10 @@ additional_languages = { }
 
 --------
 -- Railway-specific settings
-mainline_minzoom = 4
-branchline_minzoom = 5
+mainline_minzoom = 5
+branchline_minzoom = 7
 narrowgauge_minzoom = 10
-lightrail_minzoom = 9
+lightrail_minzoom = 8
 default_minzoom = 12
 --------
 

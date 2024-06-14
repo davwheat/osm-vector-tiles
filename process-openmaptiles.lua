@@ -512,11 +512,11 @@ function way_function()
 			h = h .. "_construction"
 		end
 
-		-- Drop underground platforms
+		-- Reclassify underground platforms
 		local layer = Find("layer")
 		local layerNumeric = tonumber(layer)
 		if not is_road and layerNumeric ~= nil and layerNumeric < 0 then
-			minzoom = INVALID_ZOOM
+      subclass = "underground_platform"
 		end
 
 		-- Drop all areas except infrastructure for pedestrians handled above

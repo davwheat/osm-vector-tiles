@@ -19,10 +19,10 @@ additional_languages = { }
 --------
 -- Railway-specific settings
 mainline_minzoom = 5
-branchline_minzoom = 7
+nonmainrail_minzoom = 8
 narrowgauge_minzoom = 10
-lightrail_minzoom = 8
-default_minzoom = 12
+lightrail_minzoom = 10
+default_minzoom = 14
 --------
 
 -- Enter/exit Tilemaker
@@ -239,7 +239,7 @@ pathValues      = Set { "footway", "cycleway", "bridleway", "path", "steps", "pe
 linkValues      = Set { "motorway_link", "trunk_link", "primary_link", "secondary_link", "tertiary_link" }
 pavedValues     = Set { "paved", "asphalt", "cobblestone", "concrete", "concrete:lanes", "concrete:plates", "metal", "paving_stones", "sett", "unhewn_cobblestone", "wood" }
 unpavedValues   = Set { "unpaved", "compacted", "dirt", "earth", "fine_gravel", "grass", "grass_paver", "gravel", "gravel_turf", "ground", "ice", "mud", "pebblestone", "salt", "sand", "snow", "woodchips" }
-railwayClasses  = { rail="rail", narrow_gauge="rail", preserved="rail", funicular="rail", subway="transit", light_rail="transit", monorail="transit", tram="transit" }
+railwayClasses  = { rail="rail", narrow_gauge="secondary_rail", preserved="secondary_rail", funicular="secondary_rail", subway="transit", light_rail="transit", monorail="transit", tram="transit" }
 
 aerowayBuildings= Set { "terminal", "gate", "tower" }
 landuseKeys     = Set { "school", "university", "kindergarten", "college", "library", "hospital",
@@ -569,7 +569,7 @@ function way_function()
 				if usage == "main" then
 					minzoom = mainline_minzoom
 				else
-					minzoom = branchline_minzoom
+					minzoom = nonmainrail_minzoom
 				end
 			elseif railway == "narrow_gauge" and service == "" then
 				minzoom = narrowgauge_minzoom
@@ -581,7 +581,7 @@ function way_function()
 			if HasNames() then
 				Layer("transportation_name", false)
 				SetNameAttributes()
-				MinZoom(10)
+				MinZoom(11)
 				Attribute("class", class)
 			end
 		end
@@ -594,7 +594,7 @@ function way_function()
 
 	-- 'Ferry'
 	if route=="ferry" then
-		write_to_transportation_layer(9, "ferry", nil, false, nil, false, false, is_closed)
+		write_to_transportation_layer(8, "ferry", nil, false, nil, false, false, is_closed)
 
 		if HasNames() then
 			Layer("transportation_name", false)
